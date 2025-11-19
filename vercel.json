@@ -2,8 +2,7 @@
   "crons": [
     {
       "path": "/api/scrape",
-      "schedule": "0 6 * * *",
-      "timezone": "UTC"
+      "schedule": "0 6 * * *"
     }
   ]
 }
