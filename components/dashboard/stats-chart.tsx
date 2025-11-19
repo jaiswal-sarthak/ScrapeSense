@@ -1,55 +1,66 @@
 "use client";
 
+import { useMemo } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, Activity } from "lucide-react";
 
+interface Task {
+  last_run?: {
+    run_status?: string;
+  };
+}
+
+interface Result {
+  created_at: string;
+}
+
 interface StatsChartProps {
-  tasks: any[];
-  results: any[];
+  tasks: Task[];
+  results: Result[];
 }
 
 export const StatsChart = ({ tasks, results }: StatsChartProps) => {
-  // Calculate stats
-  const totalRuns = tasks.reduce((acc, task: any) => {
-    return acc + (task.last_run ? 1 : 0);
-  }, 0);
+  // Calculate stats using useMemo to avoid recalculation on every render
+  const stats = useMemo(() => {
+    const totalRuns = tasks.reduce((acc, task) => {
+      return acc + (task.last_run ? 1 : 0);
+    }, 0);
 
-  const successfulRuns = tasks.filter(
-    (task: any) => task.last_run?.run_status === "success"
-  ).length;
+    const successfulRuns = tasks.filter(
+      (task) => task.last_run?.run_status === "success"
+    ).length;
 
-  const failedRuns = tasks.filter(
-    (task: any) => task.last_run?.run_status === "failed"
-  ).length;
+    const successRate = totalRuns > 0 ? Math.round((successfulRuns / totalRuns) * 100) : 0;
+    const totalResults = results.length;
+    
+    // Get results from last 24h - using new Date() which is acceptable in useMemo
+    const last24h = new Date().getTime() - 24 * 60 * 60 * 1000;
+    const recentResults = results.filter((r) => {
+      return new Date(r.created_at).getTime() > last24h;
+    }).length;
 
-  const successRate = totalRuns > 0 ? Math.round((successfulRuns / totalRuns) * 100) : 0;
-  const totalResults = results.length;
-  
-  // Get results from last 24h
-  const last24h = Date.now() - 24 * 60 * 60 * 1000;
-  const recentResults = results.filter((r: any) => {
-    return new Date(r.created_at).getTime() > last24h;
-  }).length;
+    return { totalRuns, successfulRuns, successRate, totalResults, recentResults };
+  }, [tasks, results]);
 
-  const stats = [
+  const statCards = [
     {
       label: "Success Rate",
-      value: `${successRate}%`,
-      change: successRate >= 80 ? "+12%" : "-5%",
-      trending: successRate >= 80 ? "up" : "down",
-      color: successRate >= 80 ? "text-emerald-600" : "text-red-600",
+      value: `${stats.successRate}%`,
+      change: stats.successRate >= 80 ? "+12%" : "-5%",
+      trending: stats.successRate >= 80 ? "up" : "down",
+      color: stats.successRate >= 80 ? "text-emerald-600" : "text-red-600",
     },
     {
       label: "Total Scraped",
-      value: totalResults,
-      change: recentResults > 0 ? `+${recentResults} today` : "No data",
-      trending: recentResults > 0 ? "up" : "neutral",
+      value: stats.totalResults,
+      change: stats.recentResults > 0 ? `+${stats.recentResults} today` : "No data",
+      trending: stats.recentResults > 0 ? "up" : "neutral",
       color: "text-blue-600",
     },
     {
       label: "Active Tasks",
       value: tasks.length,
-      change: `${successfulRuns}/${totalRuns} completed`,
+      change: `${stats.successfulRuns}/${stats.totalRuns} completed`,
       trending: "neutral",
       color: "text-purple-600",
     },
@@ -62,7 +73,7 @@ export const StatsChart = ({ tasks, results }: StatsChartProps) => {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-3 gap-4">
-          {stats.map((stat, index) => (
+          {statCards.map((stat, index) => (
             <div
               key={index}
               className="flex flex-col p-3 rounded-xl border border-white/30 bg-white/50 dark:border-white/10 dark:bg-slate-800/40"

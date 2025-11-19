@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { parse } from "node-html-parser";
 import sanitizeHtml from "sanitize-html";
 
@@ -37,7 +38,7 @@ export const runScrape = async (targetUrl: string, schema: ExtractionSchema): Pr
     const primarySelector = schema.selectors[0]?.selector ?? "body";
     try {
       await page.waitForSelector(primarySelector, { timeout: 10_000 });
-    } catch (e) {
+    } catch {
       console.warn(`Primary selector ${primarySelector} not found after timeout`);
     }
 

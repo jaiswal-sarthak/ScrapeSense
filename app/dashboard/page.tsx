@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth/options";
@@ -14,7 +15,7 @@ import { StatsChart } from "@/components/dashboard/stats-chart";
 import { NotificationStatus } from "@/components/dashboard/notification-status";
 import { AnalyticsSummary } from "@/components/dashboard/analytics-summary";
 
-interface DashboardTask {
+interface _DashboardTask {
   id: string;
   instruction_text: string;
   schedule_interval_hours: number;

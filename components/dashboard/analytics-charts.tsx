@@ -18,7 +18,7 @@ import {
   ResponsiveContainer,
   Legend,
 } from "recharts";
-import { TrendingUp, TrendingDown, Activity, Clock, Loader2 } from "lucide-react";
+import { TrendingUp, TrendingDown, Activity, Loader2 } from "lucide-react";
 
 interface AnalyticsData {
   overview: {
@@ -91,8 +91,6 @@ export const AnalyticsCharts = () => {
     { period: "Afternoon", count: data.timeDistribution.afternoon, color: "#0ea5e9" },
     { period: "Evening", count: data.timeDistribution.evening, color: "#10b981" },
   ];
-
-  const COLORS = ["#0ea5e9", "#8b5cf6", "#f59e0b", "#10b981", "#ef4444"];
 
   return (
     <div className="space-y-6">
@@ -227,9 +225,14 @@ export const AnalyticsCharts = () => {
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={({ period, percent }) =>
-                    percent > 0 ? `${period} ${(percent * 100).toFixed(0)}%` : ""
-                  }
+                  label={(props) => {
+                    const percent = props.percent || 0;
+                    const period = props.payload?.period || "";
+                    if (percent > 0) {
+                      return `${period} ${(percent * 100).toFixed(0)}%`;
+                    }
+                    return "";
+                  }}
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="count"

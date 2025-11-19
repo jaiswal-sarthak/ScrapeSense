@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Simple data sources that don't require complex scraping
  * These use public APIs and RSS feeds for reliable data

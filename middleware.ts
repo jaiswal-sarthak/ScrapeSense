@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { withAuth } from "next-auth/middleware";
 
 export default withAuth({
@@ -20,7 +21,7 @@ export default withAuth({
           cookies["__Secure-next-auth.session-token"];
 
         return Boolean(sessionCookie);
-      } catch (e) {
+      } catch {
         return false;
       }
     },

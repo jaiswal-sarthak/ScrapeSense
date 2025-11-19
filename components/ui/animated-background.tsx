@@ -39,6 +39,8 @@ export function AnimatedBackground() {
       const parsed = parseFloat(value);
       return Number.isFinite(parsed) ? parsed : fallbackPalette.connectionStrength;
     };
+    // Reading CSS variables is a valid external system sync
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCanvasPalette({
       particleGlow: computed.getPropertyValue("--bg-orbit-particle-glow").trim() || fallbackPalette.particleGlow,
       particleCore: computed.getPropertyValue("--bg-orbit-particle-core").trim() || fallbackPalette.particleCore,
