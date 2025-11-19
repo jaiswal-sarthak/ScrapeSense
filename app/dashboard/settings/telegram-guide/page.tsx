@@ -70,8 +70,8 @@ export default async function TelegramGuidePage() {
             <li className="text-sm">
               Follow the prompts:
               <ul className="mt-2 ml-6 space-y-1 list-disc">
-                <li>Give your bot a name (e.g., "My AI Monitor")</li>
-                <li>Give your bot a username (must end in 'bot', e.g., "myaimonitor_bot")</li>
+                <li>Give your bot a name (e.g., &quot;My AI Monitor&quot;)</li>
+                <li>Give your bot a username (must end in &apos;bot&apos;, e.g., &quot;myaimonitor_bot&quot;)</li>
               </ul>
             </li>
             <li className="text-sm">
@@ -82,7 +82,7 @@ export default async function TelegramGuidePage() {
           <Card className="bg-amber-50 border-amber-200 dark:bg-amber-950 dark:border-amber-800">
             <CardContent className="p-4">
               <p className="text-sm text-amber-900 dark:text-amber-100">
-                ⚠️ <strong>Important:</strong> Keep your bot token secure! You'll need to add it to your environment variables.
+                ⚠️ <strong>Important:</strong> Keep your bot token secure! You&apos;ll need to add it to your environment variables.
               </p>
             </CardContent>
           </Card>
@@ -194,7 +194,7 @@ npm run dev
       {/* What You'll Receive */}
       <Card className="border-emerald-200 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/50">
         <CardHeader>
-          <CardTitle>What You'll Receive</CardTitle>
+          <CardTitle>What You&apos;ll Receive</CardTitle>
           <CardDescription>Example notification messages</CardDescription>
         </CardHeader>
         <CardContent>
@@ -218,22 +218,22 @@ npm run dev
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <h4 className="font-semibold text-sm mb-2">❌ "Failed to send message"</h4>
+            <h4 className="font-semibold text-sm mb-2">❌ &quot;Failed to send message&quot;</h4>
             <ul className="text-sm text-muted-foreground space-y-1 ml-4">
-              <li>• Make sure you've started a conversation with your bot</li>
+              <li>• Make sure you&apos;ve started a conversation with your bot</li>
               <li>• Verify your Chat ID is correct</li>
               <li>• Check that your bot token is valid</li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-sm mb-2">❌ "Bot token not configured"</h4>
+            <h4 className="font-semibold text-sm mb-2">❌ &quot;Bot token not configured&quot;</h4>
             <ul className="text-sm text-muted-foreground space-y-1 ml-4">
               <li>• Add <code className="px-1 py-0.5 bg-muted rounded text-xs">TELEGRAM_BOT_TOKEN</code> to your <code className="px-1 py-0.5 bg-muted rounded text-xs">.env.local</code> file</li>
               <li>• Restart your development server</li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-sm mb-2">❌ "Chat not found"</h4>
+            <h4 className="font-semibold text-sm mb-2">❌ &quot;Chat not found&quot;</h4>
             <ul className="text-sm text-muted-foreground space-y-1 ml-4">
               <li>• Start a conversation with your bot first</li>
               <li>• Send at least one message to the bot</li>

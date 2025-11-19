@@ -32,7 +32,6 @@ const NotificationButton = () => {
     const permission = Notification.permission;
     const nextState: NotificationState =
       permission === "granted" ? "ready" : permission === "denied" ? "blocked" : "idle";
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setState(nextState);
   }, []);
 

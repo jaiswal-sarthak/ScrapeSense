@@ -10,8 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Card } from "@/components/ui/card";
-import { siteSchema, instructionSchema, type SitePayload } from "@/lib/validators/task";
+import { siteSchema, instructionSchema } from "@/lib/validators/task";
 
 type CombinedForm = {
   url: string;

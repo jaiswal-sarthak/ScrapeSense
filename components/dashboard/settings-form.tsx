@@ -27,9 +27,12 @@ export const SettingsForm = ({
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm<SettingsPayload>({
+  } = useForm({
     resolver: zodResolver(settingsSchema),
-    defaultValues: defaults,
+    defaultValues: {
+      alertThreshold: 1,
+      ...defaults,
+    },
   });
 
   const telegramChatId = watch("telegramChatId");
@@ -202,8 +205,8 @@ export const SettingsForm = ({
               <ol className="list-decimal list-inside space-y-1 text-blue-800 dark:text-blue-200">
                 <li>Open Telegram and search for <code className="px-1 py-0.5 bg-blue-100 dark:bg-blue-900 rounded">@userinfobot</code></li>
                 <li>Start a conversation with the bot</li>
-                <li>Copy your Chat ID from the bot's response</li>
-                <li>Paste it above and click "Test"</li>
+                <li>Copy your Chat ID from the bot&apos;s response</li>
+                <li>Paste it above and click &quot;Test&quot;</li>
               </ol>
             </div>
           </div>
@@ -285,7 +288,7 @@ export const SettingsForm = ({
               <p className="text-xs text-red-500">{errors.alertThreshold.message}</p>
             )}
             <p className="text-xs text-muted-foreground">
-              You'll be notified when at least this many changes are detected in a single scrape run.
+              You&apos;ll be notified when at least this many changes are detected in a single scrape run.
             </p>
           </div>
         </CardContent>

@@ -43,7 +43,10 @@ export const instructionWithSchema = instructionSchema.extend({
 export const settingsSchema = z.object({
   telegramChatId: z.string().optional(),
   notificationEmail: z.string().email().optional(),
-  alertThreshold: z.number().int().min(1).max(50).default(1),
+  alertThreshold: z.preprocess(
+    (val) => (val === undefined || val === null ? 1 : Number(val)),
+    z.number().int().min(1).max(50)
+  ),
 });
 
 export type SitePayload = z.infer<typeof siteSchema>;

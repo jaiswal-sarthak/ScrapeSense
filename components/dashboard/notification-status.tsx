@@ -65,7 +65,7 @@ export const NotificationStatus = ({ hasEmail, hasTelegram }: NotificationStatus
             <AlertCircle className="h-4 w-4 text-amber-600 dark:text-amber-400 mt-0.5 flex-shrink-0" />
             <div className="flex-1">
               <p className="text-xs text-amber-800 dark:text-amber-200">
-                No notifications configured. You won't receive alerts when changes are detected.
+                No notifications configured. You won&apos;t receive alerts when changes are detected.
               </p>
             </div>
           </div>

@@ -73,7 +73,7 @@ export async function inspectPage(url: string): Promise<InspectionResult> {
             });
 
             result.commonClasses = Array.from(classMap.entries())
-                .filter(([_, count]) => count >= 3)
+                .filter(([, count]) => count >= 3)
                 .sort((a, b) => b[1] - a[1])
                 .slice(0, 30)
                 .map(([cls]) => cls);
@@ -100,7 +100,7 @@ export async function inspectPage(url: string): Promise<InspectionResult> {
             });
 
             result.repeatingSelectors = Array.from(elementMap.entries())
-                .filter(([_, count]) => count >= 3)
+                .filter(([, count]) => count >= 3)
                 .sort((a, b) => b[1] - a[1])
                 .slice(0, 20)
                 .map(([selector, count]) => `${selector} (${count})`);

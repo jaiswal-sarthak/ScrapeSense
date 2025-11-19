@@ -126,7 +126,7 @@ export default async function ResultsPage() {
                   <p className="font-medium text-sm mb-2">⚠️ Scrape Failed</p>
                   <p className="text-xs mb-3">{lastRun.error_message || 'Unknown error occurred'}</p>
                   <p className="text-xs text-amber-700 dark:text-amber-300">
-                    💡 Try clicking "Regenerate Schema" in the Overview page to update the selectors.
+                    💡 Try clicking &quot;Regenerate Schema&quot; in the Overview page to update the selectors.
                   </p>
                 </div>
               )}

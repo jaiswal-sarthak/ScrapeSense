@@ -4,7 +4,7 @@ import { authOptions } from "@/lib/auth/options";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { ArrowLeft, ExternalLink, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 
 export default async function EmailGuidePage() {
   const session = await getServerSession(authOptions);
@@ -84,7 +84,7 @@ export default async function EmailGuidePage() {
             <li>Log in to your Resend dashboard</li>
             <li>Go to <strong>API Keys</strong> in the sidebar</li>
             <li>Click <strong>Create API Key</strong></li>
-            <li>Give it a name (e.g., "AI Monitor")</li>
+            <li>Give it a name (e.g., &quot;AI Monitor&quot;)</li>
             <li>Select <strong>Full Access</strong> or <strong>Sending Access</strong></li>
             <li>
               <strong>Copy the API key</strong> (starts with <code className="px-2 py-1 bg-muted rounded text-xs font-mono">re_</code>)
@@ -94,7 +94,7 @@ export default async function EmailGuidePage() {
           <Card className="bg-amber-50 border-amber-200 dark:bg-amber-950 dark:border-amber-800">
             <CardContent className="p-4">
               <p className="text-sm text-amber-900 dark:text-amber-100">
-                ⚠️ <strong>Important:</strong> Copy the key immediately! You won't be able to see it again.
+                ⚠️ <strong>Important:</strong> Copy the key immediately! You won&apos;t be able to see it again.
               </p>
             </CardContent>
           </Card>
@@ -171,7 +171,7 @@ npm run dev
       {/* What You'll Receive */}
       <Card className="border-emerald-200 bg-emerald-50/50 dark:border-emerald-800 dark:bg-emerald-950/50">
         <CardHeader>
-          <CardTitle>What You'll Receive</CardTitle>
+          <CardTitle>What You&apos;ll Receive</CardTitle>
           <CardDescription>Beautiful HTML emails with full details</CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
@@ -240,7 +240,7 @@ npm run dev
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <h4 className="font-semibold text-sm mb-2">❌ "Email service not configured"</h4>
+            <h4 className="font-semibold text-sm mb-2">❌ &quot;Email service not configured&quot;</h4>
             <ul className="text-sm text-muted-foreground space-y-1 ml-4">
               <li>• Add <code className="px-1 py-0.5 bg-muted rounded text-xs">RESEND_API_KEY</code> to your <code className="px-1 py-0.5 bg-muted rounded text-xs">.env.local</code> file</li>
               <li>• Restart your development server</li>

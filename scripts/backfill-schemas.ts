@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "dotenv/config";
 import { db } from "../lib/supabase/queries";
 import { generateExtractionSchema } from "../lib/ai/groq";

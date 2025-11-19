@@ -1,11 +1,11 @@
 #!/usr/bin/env node
+/* eslint-disable @typescript-eslint/no-require-imports, @typescript-eslint/no-unused-vars */
 /**
  * Login Configuration Verification Script
  * Run with: node verify-login-config.js
  */
 
 const fs = require('fs');
-const path = require('path');
 
 console.log('🔍 Verifying Login Configuration...\n');
 

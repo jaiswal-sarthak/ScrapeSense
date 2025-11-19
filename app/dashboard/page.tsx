@@ -15,29 +15,6 @@ import { StatsChart } from "@/components/dashboard/stats-chart";
 import { NotificationStatus } from "@/components/dashboard/notification-status";
 import { AnalyticsSummary } from "@/components/dashboard/analytics-summary";
 
-interface _DashboardTask {
-  id: string;
-  instruction_text: string;
-  schedule_interval_hours: number;
-  ai_generated_schema: Record<string, unknown> | null;
-  site: {
-    id: string;
-    url: string;
-    title?: string | null;
-    last_health_status?: "healthy" | "degraded" | "failed" | "unknown" | null;
-  } | {
-    id: string;
-    url: string;
-    title?: string | null;
-    last_health_status?: "healthy" | "degraded" | "failed" | "unknown" | null;
-  }[] | null;
-  last_run?: {
-    run_status?: string | null;
-    run_time?: string | null;
-    error_message?: string | null;
-  }[] | null;
-}
-
 const resolveStatus = (
   status?: string | null,
 ): "healthy" | "degraded" | "failed" | "unknown" => {
