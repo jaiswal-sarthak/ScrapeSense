@@ -31,7 +31,13 @@ async function main() {
 
         // Generate AI summary
         console.log("Generating AI summary...");
-        const summaryPayload = await summarizeResults(results.slice(0, 10));
+        const summaryPayload = await summarizeResults(
+            results.slice(0, 10).map((item) => ({
+                title: item.title,
+                description: item.description ?? "",
+                metadata: item.metadata,
+            }))
+        );
         console.log("Summary:", summaryPayload);
 
         // Update last run
