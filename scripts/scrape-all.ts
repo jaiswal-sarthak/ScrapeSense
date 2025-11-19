@@ -41,7 +41,13 @@ async function main() {
 
             if (results.length > 0) {
                 // Generate AI summary
-                const summary = await summarizeResults(results.slice(0, 10)).catch(() => null);
+                const summary = await summarizeResults(
+                    results.slice(0, 10).map((item) => ({
+                        title: item.title,
+                        description: item.description ?? "",
+                        metadata: item.metadata,
+                    }))
+                ).catch(() => null);
                 const summaryText = toSummary(summary);
 
                 // Insert results
