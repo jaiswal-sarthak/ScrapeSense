@@ -7,6 +7,10 @@
 ![Supabase](https://img.shields.io/badge/Supabase-Database-green?style=flat-square&logo=supabase)
 ![AI Powered](https://img.shields.io/badge/AI-Powered-purple?style=flat-square)
 
+## 🚀 Live Demo
+
+**👉 [Try it now: https://scrape-sense-one.vercel.app](https://scrape-sense-one.vercel.app)**
+
 ---
 
 ## 📖 Table of Contents
@@ -483,7 +487,9 @@ Get analytics data.
 3. **Set Environment Variables**:
    - In Vercel project settings
    - Add all variables from `.env.local`
-   - Update `NEXTAUTH_URL` to your Vercel domain
+   - Update `NEXTAUTH_URL` to your Vercel domain (e.g., `https://scrape-sense-one.vercel.app`)
+
+**Live Deployment**: [https://scrape-sense-one.vercel.app](https://scrape-sense-one.vercel.app)
 
 4. **Set Up Cron Jobs** (Optional):
    - Add to `vercel.json`:
@@ -648,6 +654,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📮 Contact
 
+- **Live App**: [https://scrape-sense-one.vercel.app](https://scrape-sense-one.vercel.app)
 - **GitHub**: [@yourusername](https://github.com/yourusername)
 - **Email**: your.email@example.com
 - **Twitter**: [@yourhandle](https://twitter.com/yourhandle)
