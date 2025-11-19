@@ -41,7 +41,11 @@ async function main() {
         console.log("Summary:", summaryPayload);
 
         // Update last run
-        await db.recordScrapeRun(phInstruction.id, results.length);
+        await db.logScrapeRun({
+            instructionId: phInstruction.id,
+            status: "success",
+            durationMs: undefined,
+        });
         console.log("✓ Recorded scrape run");
     }
 
