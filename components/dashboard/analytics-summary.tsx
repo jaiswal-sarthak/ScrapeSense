@@ -34,9 +34,13 @@ export const AnalyticsSummary = () => {
       if (response.ok) {
         const analytics = await response.json();
         setData(analytics);
+      } else {
+        console.error("Analytics API error:", response.status, response.statusText);
+        setData(null);
       }
     } catch (error) {
       console.error("Failed to fetch analytics:", error);
+      setData(null);
     } finally {
       setLoading(false);
     }
