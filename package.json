@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "postinstall": "node scripts/ensure-playwright.js || npx playwright install chromium || true",
-    "build": "node scripts/ensure-playwright.js && npx playwright install chromium && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "scrape:run": "tsx scripts/cron-scraper.ts"
