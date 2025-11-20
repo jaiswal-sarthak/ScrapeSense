@@ -20,7 +20,28 @@ interface InspectionResult {
  * for AI-based schema generation
  */
 export async function inspectPage(url: string): Promise<InspectionResult> {
-    const browser = await chromium.launch({ headless: true });
+    let browser;
+    try {
+        browser = await chromium.launch({
+            headless: true,
+            args: [
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-accelerated-2d-canvas",
+                "--no-first-run",
+                "--no-zygote",
+                "--single-process",
+            ],
+        });
+    } catch (error: any) {
+        if (error.message?.includes("Executable doesn't exist") || error.message?.includes("browserType.launch")) {
+            throw new Error(
+                "Playwright browser not installed. Please ensure 'npx playwright install chromium' runs during build."
+            );
+        }
+        throw error;
+    }
     const page = await browser.newPage();
 
     try {

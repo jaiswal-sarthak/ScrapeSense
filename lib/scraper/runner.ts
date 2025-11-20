@@ -22,10 +22,29 @@ interface ScrapeResult {
 
 export const runScrape = async (targetUrl: string, schema: ExtractionSchema): Promise<ScrapeResult[]> => {
   const { chromium } = await import("playwright");
-  const browser = await chromium.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  let browser;
+  try {
+    browser = await chromium.launch({
+      headless: true,
+      args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-accelerated-2d-canvas",
+        "--no-first-run",
+        "--no-zygote",
+        "--single-process",
+      ],
+    });
+  } catch (error: any) {
+    if (error.message?.includes("Executable doesn't exist") || error.message?.includes("browserType.launch")) {
+      throw new Error(
+        "Playwright browser not installed. Please ensure 'npx playwright install chromium' runs during build. " +
+        "If deploying to Vercel, check that the build script includes browser installation."
+      );
+    }
+    throw error;
+  }
 
   const page = await browser.newPage({
     userAgent: process.env.SCRAPER_DEFAULT_USER_AGENT,

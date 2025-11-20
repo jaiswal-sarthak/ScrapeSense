@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "postinstall": "npx playwright install chromium --with-deps || true",
+    "build": "npx playwright install chromium --with-deps && next build",
     "start": "next start",
     "lint": "eslint",
     "scrape:run": "tsx scripts/cron-scraper.ts"
@@ -42,7 +43,8 @@
     "sanitize-html": "^2.13.0",
     "tailwind-merge": "^2.5.4",
     "telegram": "^2.20.0",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "playwright": "^1.48.2"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -53,7 +55,6 @@
     "autoprefixer": "^10.4.20",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
-    "playwright": "^1.48.2",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.13",
     "tsx": "^4.19.2",
